@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/Interactable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Common/TileMap.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Camera2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/ColorRect.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Level_Carrot.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Carrot.png" type="Texture" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 56, 16 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 5.59999, 8.8 )
+
+[node name="Level_Carrot" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -648.0
+margin_top = -552.0
+margin_right = 2808.0
+margin_bottom = 2160.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelNavigation" type="Navigation2D" parent="." groups=[
+"LevelNavigation",
+]]
+
+[node name="TileMap" parent="LevelNavigation" instance=ExtResource( 2 )]
+scale = Vector2( 4, 4 )
+collision_mask = 6
+tile_data = PoolIntArray( 65535, 27, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 28, 0, 131071, 12, 0, 65536, 9, 0, 65537, 10, 0, 65538, 9, 0, 65539, 9, 0, 65540, 9, 0, 65541, 9, 0, 65542, 9, 0, 65543, 9, 0, 65544, 9, 0, 65545, 9, 0, 65546, 9, 0, 65547, 9, 0, 65548, 9, 0, 65549, 9, 0, 65550, 16, 0, 196607, 12, 0, 131072, 14, 0, 131073, 26, 0, 131074, 8, 0, 131075, 8, 0, 131076, 8, 0, 131077, 8, 0, 131078, 8, 0, 131079, 8, 0, 131080, 8, 0, 131081, 8, 0, 131082, 8, 0, 131083, 8, 0, 131084, 8, 0, 131085, 15, 0, 131086, 16, 0, 262143, 12, 0, 196608, 13, 0, 196609, 1, 0, 196610, 1, 0, 196611, 11, 0, 196612, 11, 0, 196613, 11, 0, 196614, 11, 0, 196615, 11, 0, 196616, 11, 0, 196617, 11, 0, 196618, 11, 0, 196619, 11, 0, 196620, 1, 0, 196621, 17, 0, 196622, 16, 0, 327679, 12, 0, 262144, 25, 0, 262145, 23, 0, 262146, 23, 0, 262147, 23, 0, 262148, 23, 0, 262149, 23, 0, 262150, 23, 0, 262151, 23, 0, 262152, 23, 0, 262153, 23, 0, 262154, 23, 0, 262155, 23, 0, 262156, 23, 0, 262157, 24, 0, 262158, 16, 0, 393215, 30, 0, 327680, 22, 0, 327681, 22, 0, 327682, 22, 0, 327683, 22, 0, 327684, 22, 0, 327685, 22, 0, 327686, 22, 0, 327687, 22, 0, 327688, 22, 0, 327689, 22, 0, 327690, 22, 0, 327691, 22, 0, 327692, 22, 0, 327693, 22, 0, 327694, 29, 0, 786481, 1, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 192, 440 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Interactable" parent="." instance=ExtResource( 1 )]
+position = Vector2( 192, 264 )
+
+[node name="CollisionShape2D" parent="Interactable" index="0"]
+shape = SubResource( 1 )
+
+[node name="Camera2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 192, 440 )
+
+[node name="Top_left" parent="Camera2D/Limits" index="0"]
+position = Vector2( -128, -64 )
+
+[node name="Bottom_right" parent="Camera2D/Limits" index="1"]
+position = Vector2( 1984, 1224 )
+
+[node name="Carrot" type="Sprite" parent="."]
+position = Vector2( 1344, 432 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 7 )
+
+[node name="Area2D" type="Area2D" parent="Carrot"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Carrot/Area2D"]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Interactable" to="." method="_on_Interactable_body_entered"]
+[connection signal="body_entered" from="Carrot/Area2D" to="." method="_on_Area2D_body_entered"]
+
+[editable path="Interactable"]
+[editable path="Camera2D"]

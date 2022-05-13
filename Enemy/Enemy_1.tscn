@@ -1,0 +1,172 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Common/Hitbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Common/Health.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Enemy.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Laser.png" type="Texture" id=4]
+[ext_resource path="res://Enemy/Enemy_1.gd" type="Script" id=5]
+[ext_resource path="res://Enemy/HealthBar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemy/Wander_controller.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/enemy_laser.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/warp.wav" type="AudioStream" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 34, 34 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 34, 34 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 33.7744, 34 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 13.5908, 31.6444 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Laser"
+length = 0.7
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "finished_laser"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Laser_hitbox:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Laser_hitbox/laser:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 466.0
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 34, 32 )
+
+[node name="Enemy_1" type="KinematicBody2D" groups=[
+"Enemy",
+]]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = -1.5708
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 1 )]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource( 2 )
+
+[node name="Player_detector" type="Area2D" parent="."]
+position = Vector2( 32, 0 )
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_detector"]
+position = Vector2( 0.225563, 0 )
+shape = SubResource( 3 )
+
+[node name="Laser_hitbox" type="Area2D" parent="."]
+position = Vector2( 48, 0 )
+monitorable = false
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Laser_hitbox"]
+position = Vector2( 0.329601, 0 )
+shape = SubResource( 4 )
+
+[node name="laser" type="Sprite" parent="Laser_hitbox"]
+position = Vector2( 1.946, -0.111362 )
+scale = Vector2( 15.946, 0.8 )
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Laser = SubResource( 5 )
+
+[node name="Misdirection_timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Attack_lag" type="Timer" parent="."]
+wait_time = 0.01
+
+[node name="Health" parent="." instance=ExtResource( 2 )]
+
+[node name="take_damage" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="HealthBar" parent="." instance=ExtResource( 6 )]
+margin_left = -32.0
+margin_top = -50.0
+margin_right = -32.0
+margin_bottom = -50.0
+
+[node name="Detection" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+shape = SubResource( 6 )
+
+[node name="Wander_controller" parent="." instance=ExtResource( 7 )]
+
+[node name="warp_detection" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="warp_detection"]
+modulate = Color( 0.976471, 0.976471, 0.976471, 1 )
+shape = SubResource( 7 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[connection signal="area_entered" from="Player_detector" to="." method="_on_Player_detector_area_entered"]
+[connection signal="area_exited" from="Player_detector" to="." method="_on_Player_detector_area_exited"]
+[connection signal="area_entered" from="Laser_hitbox" to="." method="_on_Laser_hitbox_area_entered"]
+[connection signal="timeout" from="Misdirection_timer" to="." method="_on_Misdirection_timer_timeout"]
+[connection signal="timeout" from="Attack_lag" to="." method="_on_Attack_lag_timeout"]
+[connection signal="timeout" from="take_damage" to="." method="_on_take_damage_timeout"]
+[connection signal="area_entered" from="Detection" to="." method="_on_Detection_area_entered"]
+[connection signal="area_exited" from="Detection" to="." method="_on_Detection_area_exited"]
+[connection signal="input_event" from="warp_detection" to="." method="_on_warp_detection_input_event"]
+
+[editable path="Hitbox"]

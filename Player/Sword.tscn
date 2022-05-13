@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Player/Sword.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sword.png" type="Texture" id=2]
+[ext_resource path="res://Assets/568169__merrick079__sword-sound-2.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/ric_metal-2.wav" type="AudioStream" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "swing_left"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sword:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -45.0, -90.0, -135.0, -180.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sword:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "swing_right"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sword:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -180.0, -135.0, -90.0, -45.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sword:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="Sword" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sword" type="RayCast2D" parent="."]
+rotation = -3.14159
+cast_to = Vector2( 0, 120 )
+collision_mask = 4
+
+[node name="Sprite" type="Sprite" parent="Sword"]
+position = Vector2( -0.0417609, 58.2504 )
+scale = Vector2( 3.93607, 1.45626 )
+texture = ExtResource( 2 )
+
+[node name="Swing_timer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/swing_left = SubResource( 1 )
+anims/swing_right = SubResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[connection signal="timeout" from="Swing_timer" to="." method="_on_Swing_timer_timeout"]

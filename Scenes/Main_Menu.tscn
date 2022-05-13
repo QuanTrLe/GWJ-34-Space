@@ -1,0 +1,258 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scenes/Main_Menu.gd" type="Script" id=1]
+[ext_resource path="res://Common/new_dynamicfont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/ChiKareGo2.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/Whats up doc.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Enemy.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sword.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Player_potrait.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 164
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+font_data = ExtResource( 3 )
+
+[node name="Main_Menu" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 800.0
+color = Color( 0.670588, 0.807843, 1, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 1280.0
+margin_bottom = 800.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 404.0
+margin_top = 40.0
+margin_right = 876.0
+margin_bottom = 760.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+margin_right = 472.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer"]
+modulate = Color( 0.0984192, 0.18602, 0.585938, 1 )
+margin_top = 23.0
+margin_right = 472.0
+margin_bottom = 177.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.654902, 0.376471, 0.862745, 1 )
+text = "Leaper"
+
+[node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 204.0
+margin_right = 472.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 0, 400 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2"]
+margin_left = 54.0
+margin_right = 418.0
+margin_bottom = 516.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_right = 364.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer"]
+margin_top = 20.0
+margin_right = 364.0
+margin_bottom = 80.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_right = 28.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 28, 0 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.203922, 0.2, 0.2, 1 )
+text = ">"
+
+[node name="OptionName" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_left = 32.0
+margin_right = 364.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 332, 0 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.203922, 0.2, 0.2, 1 )
+text = "Start"
+
+[node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 104.0
+margin_right = 364.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2"]
+margin_top = 20.0
+margin_right = 364.0
+margin_bottom = 80.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer"]
+margin_right = 28.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 28, 0 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.203922, 0.2, 0.2, 1 )
+text = ">"
+
+[node name="OptionName" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer"]
+margin_left = 32.0
+margin_right = 364.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 332, 0 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.203922, 0.2, 0.2, 1 )
+text = "Difficulty"
+
+[node name="CenterContainer4" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 208.0
+margin_right = 364.0
+margin_bottom = 308.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer4"]
+margin_top = 20.0
+margin_right = 364.0
+margin_bottom = 80.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer4/HBoxContainer"]
+margin_right = 28.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 28, 0 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.203922, 0.2, 0.2, 1 )
+text = ">"
+
+[node name="OptionName" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer4/HBoxContainer"]
+margin_left = 32.0
+margin_right = 364.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 332, 0 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.203922, 0.2, 0.2, 1 )
+text = "Effects"
+
+[node name="CenterContainer3" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 312.0
+margin_right = 364.0
+margin_bottom = 412.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3"]
+margin_top = 20.0
+margin_right = 364.0
+margin_bottom = 80.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer"]
+margin_right = 28.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 28, 0 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.203922, 0.2, 0.2, 1 )
+text = ">"
+
+[node name="OptionName" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer"]
+margin_left = 32.0
+margin_right = 364.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 252, 0 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.203922, 0.2, 0.2, 1 )
+text = "Remap Input"
+
+[node name="CenterContainer5" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 416.0
+margin_right = 364.0
+margin_bottom = 516.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer5"]
+margin_top = 20.0
+margin_right = 364.0
+margin_bottom = 80.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer5/HBoxContainer"]
+margin_right = 28.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 28, 0 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.203922, 0.2, 0.2, 1 )
+text = ">"
+
+[node name="OptionName" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer5/HBoxContainer"]
+margin_left = 32.0
+margin_right = 364.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 332, 0 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.203922, 0.2, 0.2, 1 )
+text = "Exit"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2( -664.743, -845.862 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 1280.0
+margin_bottom = 800.0
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = 1000.0
+margin_top = 384.0
+margin_right = 1280.0
+margin_bottom = 942.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.203922, 0.2, 0.2, 1 )
+text = "Music:
+
+1) Menu: Sci-Fi Dramatic Theme by Twisterium | https://www.twisterium.com/
+Music promoted by https://www.chosic.com/
+Licensed under Creative Commons: Attribution 3.0 Unported (CC BY 3.0)
+https://creativecommons.org/licenses/by/3.0/
+
+2) Game: https://www.chosic.com/
+"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Whats up doc" type="Sprite" parent="."]
+position = Vector2( 152, 584 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 4 )
+
+[node name="Player_potrait" type="Sprite" parent="."]
+position = Vector2( 160, 144 )
+rotation = 0.183835
+scale = Vector2( 10, 10 )
+texture = ExtResource( 7 )
+
+[node name="Sword" type="Sprite" parent="Player_potrait"]
+position = Vector2( 8.213, -3.9682 )
+rotation = -2.12794
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 6 )
+
+[node name="Enemy" type="Sprite" parent="Player_potrait"]
+position = Vector2( 89.8095, -15.8849 )
+rotation = -0.424192
+texture = ExtResource( 5 )

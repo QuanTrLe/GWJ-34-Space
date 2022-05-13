@@ -1,0 +1,240 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Common/TileMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Interactable.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Camera2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Traps/Saw.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Level_3.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/ColorRect.gd" type="Script" id=7]
+[ext_resource path="res://Enemy/Enemy_2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Level_4.tscn" type="PackedScene" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 40 )
+
+[node name="Level_3" type="Node2D"]
+script = ExtResource( 6 )
+scene_to = ExtResource( 9 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -448.0
+margin_top = -544.0
+margin_right = 3256.0
+margin_bottom = 2112.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelNavigation" type="Navigation2D" parent="." groups=[
+"LevelNavigation",
+]]
+
+[node name="TileMap" parent="LevelNavigation" instance=ExtResource( 1 )]
+scale = Vector2( 4, 4 )
+tile_data = PoolIntArray( -65537, 27, 0, -131072, 0, 0, -131071, 0, 0, -131070, 7, 0, -131069, 0, 0, -131068, 0, 0, -131067, 7, 0, -131066, 0, 0, -131065, 0, 0, -131064, 6, 0, -131063, 0, 0, -131062, 0, 0, -131061, 6, 0, -131060, 0, 0, -131059, 0, 0, -131058, 7, 0, -131057, 0, 0, -131056, 0, 0, -131055, 7, 0, -131054, 0, 0, -131053, 0, 0, -131052, 0, 0, -131051, 28, 0, -1, 12, 0, -65536, 9, 0, -65535, 9, 0, -65534, 9, 0, -65533, 9, 0, -65532, 9, 0, -65531, 9, 0, -65530, 9, 0, -65529, 9, 0, -65528, 9, 0, -65527, 9, 0, -65526, 9, 0, -65525, 9, 0, -65524, 9, 0, -65523, 9, 0, -65522, 9, 0, -65521, 9, 0, -65520, 9, 0, -65519, 9, 0, -65518, 9, 0, -65517, 9, 0, -65516, 9, 0, -65515, 16, 0, 65535, 12, 0, 0, 14, 0, 1, 8, 0, 2, 8, 0, 3, 8, 0, 4, 8, 0, 5, 8, 0, 6, 8, 0, 7, 8, 0, 8, 8, 0, 9, 8, 0, 10, 8, 0, 11, 3, 0, 12, 8, 0, 13, 8, 0, 14, 8, 0, 15, 8, 0, 16, 8, 0, 17, 8, 0, 18, 8, 0, 19, 8, 0, 20, 15, 0, 21, 16, 0, 131071, 18, 0, 65536, 20, 0, 65537, 1, 0, 65538, 1, 0, 65539, 3, 0, 65540, 3, 0, 65541, 3, 0, 65542, 3, 0, 65543, 3, 0, 65544, 3, 0, 65545, 3, 0, 65546, 3, 0, 65547, 3, 0, 65548, 3, 0, 65549, 3, 0, 65550, 3, 0, 65551, 3, 0, 65552, 3, 0, 65553, 3, 0, 65554, 3, 0, 65555, 3, 0, 65556, 17, 0, 65557, 16, 0, 196607, 12, 0, 131072, 25, 0, 131073, 23, 0, 131074, 23, 0, 131075, 3, 0, 131076, 23, 0, 131077, 23, 0, 131078, 23, 0, 131079, 23, 0, 131080, 23, 0, 131081, 23, 0, 131082, 23, 0, 131083, 23, 0, 131084, 23, 0, 131085, 23, 0, 131086, 23, 0, 131087, 23, 0, 131088, 23, 0, 131089, 23, 0, 131090, 1, 0, 131091, 3, 0, 131092, 17, 0, 131093, 16, 0, 262143, 30, 0, 196608, 22, 0, 196609, 22, 0, 196610, 22, 0, 196611, 22, 0, 196612, 22, 0, 196613, 22, 0, 196614, 22, 0, 196615, 22, 0, 196616, 22, 0, 196617, 22, 0, 196618, 22, 0, 196619, 22, 0, 196620, 22, 0, 196621, 22, 0, 196622, 22, 0, 196623, 22, 0, 196624, 22, 0, 196625, 33, 0, 196626, 13, 0, 196627, 3, 0, 196628, 17, 0, 196629, 16, 0, 262161, 12, 0, 262162, 3, 0, 262163, 3, 0, 262164, 17, 0, 262165, 16, 0, 327697, 12, 0, 327698, 13, 0, 327699, 3, 0, 327700, 17, 0, 327701, 16, 0, 393233, 12, 0, 393234, 13, 0, 393235, 3, 0, 393236, 17, 0, 393237, 16, 0, 458769, 12, 0, 458770, 13, 0, 458771, 3, 0, 458772, 17, 0, 458773, 16, 0, 589823, 27, 0, 524288, 0, 0, 524289, 0, 0, 524290, 5, 0, 524291, 0, 0, 524292, 0, 0, 524293, 5, 0, 524294, 0, 0, 524295, 0, 0, 524296, 5, 0, 524297, 0, 0, 524298, 0, 0, 524299, 5, 0, 524300, 0, 0, 524301, 0, 0, 524302, 5, 0, 524303, 0, 0, 524304, 0, 0, 524305, 5, 0, 524306, 13, 0, 524307, 3, 0, 524308, 17, 0, 524309, 16, 0, 655359, 12, 0, 589824, 9, 0, 589825, 9, 0, 589826, 9, 0, 589827, 9, 0, 589828, 9, 0, 589829, 9, 0, 589830, 9, 0, 589831, 9, 0, 589832, 9, 0, 589833, 9, 0, 589834, 9, 0, 589835, 9, 0, 589836, 9, 0, 589837, 9, 0, 589838, 9, 0, 589839, 9, 0, 589840, 9, 0, 589841, 9, 0, 589842, 13, 0, 589843, 3, 0, 589844, 3, 0, 589845, 16, 0, 720895, 12, 0, 655360, 14, 0, 655361, 8, 0, 655362, 8, 0, 655363, 8, 0, 655364, 8, 0, 655365, 8, 0, 655366, 8, 0, 655367, 8, 0, 655368, 8, 0, 655369, 8, 0, 655370, 8, 0, 655371, 8, 0, 655372, 3, 0, 655373, 8, 0, 655374, 8, 0, 655375, 8, 0, 655376, 8, 0, 655377, 8, 0, 655378, 1, 0, 655379, 3, 0, 655380, 17, 0, 655381, 16, 0, 786431, 18, 0, 720896, 20, 0, 720897, 1, 0, 720898, 1, 0, 720899, 1, 0, 720900, 3, 0, 720901, 3, 0, 720902, 3, 0, 720903, 3, 0, 720904, 3, 0, 720905, 3, 0, 720906, 3, 0, 720907, 3, 0, 720908, 3, 0, 720909, 3, 0, 720910, 3, 0, 720911, 3, 0, 720912, 3, 0, 720913, 3, 0, 720914, 3, 0, 720915, 3, 0, 720916, 17, 0, 720917, 16, 0, 851967, 12, 0, 786432, 25, 0, 786433, 23, 0, 786434, 23, 0, 786435, 23, 0, 786436, 3, 0, 786437, 23, 0, 786438, 23, 0, 786439, 23, 0, 786440, 23, 0, 786441, 23, 0, 786442, 23, 0, 786443, 23, 0, 786444, 23, 0, 786445, 23, 0, 786446, 23, 0, 786447, 23, 0, 786448, 23, 0, 786449, 23, 0, 786450, 23, 0, 786451, 23, 0, 786452, 24, 0, 786453, 16, 0, 917503, 30, 0, 851968, 22, 0, 851969, 22, 0, 851970, 22, 0, 851971, 22, 0, 851972, 22, 0, 851973, 22, 0, 851974, 22, 0, 851975, 22, 0, 851976, 22, 0, 851977, 22, 0, 851978, 22, 0, 851979, 22, 0, 851980, 22, 0, 851981, 22, 0, 851982, 22, 0, 851983, 22, 0, 851984, 22, 0, 851985, 22, 0, 851986, 22, 0, 851987, 22, 0, 851988, 22, 0, 851989, 29, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 256, 192 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="Enemy_2" parent="Enemy" instance=ExtResource( 8 )]
+position = Vector2( 1488, 328 )
+
+[node name="Enemy_3" parent="Enemy" instance=ExtResource( 8 )]
+position = Vector2( 2648, 576 )
+
+[node name="Enemy_4" parent="Enemy" instance=ExtResource( 8 )]
+position = Vector2( 1608, 1632 )
+
+[node name="Enemy_6" parent="Enemy" instance=ExtResource( 8 )]
+position = Vector2( 2368, 1224 )
+
+[node name="Enemy_5" parent="Enemy" instance=ExtResource( 8 )]
+position = Vector2( 1088, 1336 )
+
+[node name="Enemy_7" parent="Enemy" instance=ExtResource( 8 )]
+position = Vector2( 472, 1344 )
+
+[node name="Trap" type="Node2D" parent="."]
+
+[node name="Saw" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 448, 192 )
+
+[node name="Saw22" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 448, 320 )
+
+[node name="Saw42" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 1600, 1344 )
+
+[node name="Saw23" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 1472, 64 )
+
+[node name="Saw24" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 2496, 704 )
+
+[node name="Saw25" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 2496, 832 )
+
+[node name="Saw26" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 2496, 960 )
+
+[node name="Saw27" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 2496, 1088 )
+
+[node name="Saw28" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 2496, 1216 )
+
+[node name="Saw29" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 2496, 1344 )
+
+[node name="Saw30" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 2496, 1472 )
+
+[node name="Saw40" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 2624, 1216 )
+
+[node name="Saw41" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 576, 1600 )
+
+[node name="Saw2" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 576, 192 )
+
+[node name="Saw3" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 704, 192 )
+
+[node name="Saw4" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 832, 192 )
+
+[node name="Saw5" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 960, 192 )
+
+[node name="Saw6" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 1088, 192 )
+
+[node name="Saw7" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 1216, 192 )
+
+[node name="Saw8" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 1344, 192 )
+
+[node name="Saw9" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 1472, 192 )
+
+[node name="Saw10" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 1600, 192 )
+
+[node name="Saw31" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 1344, 1472 )
+
+[node name="Saw32" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 1472, 1472 )
+
+[node name="Saw33" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 1600, 1472 )
+
+[node name="Saw34" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 1728, 1472 )
+
+[node name="Saw35" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 1856, 1472 )
+
+[node name="Saw36" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 1984, 1472 )
+
+[node name="Saw37" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 2112, 1472 )
+
+[node name="Saw38" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 2240, 1472 )
+
+[node name="Saw39" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 2368, 1472 )
+
+[node name="Saw43" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 576, 1472 )
+
+[node name="Saw44" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 704, 1472 )
+
+[node name="Saw45" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 832, 1472 )
+
+[node name="Saw46" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 960, 1472 )
+
+[node name="Saw47" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 1088, 1472 )
+
+[node name="Saw48" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 1216, 1472 )
+
+[node name="Saw11" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 1728, 192 )
+
+[node name="Saw12" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 1856, 192 )
+
+[node name="Saw13" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 1984, 192 )
+
+[node name="Saw14" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 2112, 192 )
+
+[node name="Saw15" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 2240, 192 )
+
+[node name="Saw16" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 2368, 192 )
+
+[node name="Saw17" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 2496, 192 )
+
+[node name="Saw18" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 2496, 320 )
+
+[node name="Saw19" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 2496, 448 )
+
+[node name="Saw20" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 2496, 576 )
+
+[node name="Saw21" parent="Trap" instance=ExtResource( 5 )]
+position = Vector2( 2368, 576 )
+
+[node name="Interactable" parent="." instance=ExtResource( 3 )]
+position = Vector2( 16, 192 )
+
+[node name="CollisionShape2D" parent="Interactable" index="0"]
+shape = SubResource( 1 )
+
+[node name="Interactable2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 24, 1472 )
+
+[node name="CollisionShape2D" parent="Interactable2" index="0"]
+shape = SubResource( 1 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 120, 1472 )
+
+[node name="Camera2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 256, 192 )
+
+[node name="Top_left" parent="Camera2D/Limits" index="0"]
+position = Vector2( -192, -376 )
+
+[node name="Bottom_right" parent="Camera2D/Limits" index="1"]
+position = Vector2( 2880, 1864 )
+
+[connection signal="body_entered" from="Interactable" to="." method="_on_Interactable_body_entered"]
+[connection signal="body_entered" from="Interactable2" to="." method="_on_Interactable2_body_entered"]
+
+[editable path="Interactable"]
+[editable path="Interactable2"]
+[editable path="Camera2D"]

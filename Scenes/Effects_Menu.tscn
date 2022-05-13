@@ -1,0 +1,159 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Effects_Menu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/ChiKareGo2.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 124
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 64
+font_data = ExtResource( 3 )
+
+[node name="Effects_Menu" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 800.0
+color = Color( 0.670588, 0.807843, 1, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 1280.0
+margin_bottom = 800.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 244.0
+margin_top = 48.0
+margin_right = 1035.0
+margin_bottom = 752.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+margin_right = 791.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 0, 300 )
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer"]
+margin_top = 91.0
+margin_right = 791.0
+margin_bottom = 208.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.203922, 0.2, 0.2, 1 )
+text = "Efects Settings"
+
+[node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 304.0
+margin_right = 791.0
+margin_bottom = 704.0
+rect_min_size = Vector2( 0, 400 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2"]
+margin_left = 75.0
+margin_top = 46.0
+margin_right = 715.0
+margin_bottom = 354.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_right = 640.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer"]
+margin_top = 20.0
+margin_right = 640.0
+margin_bottom = 80.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_right = 28.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 28, 0 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.203922, 0.2, 0.2, 1 )
+text = ">"
+
+[node name="OptionName" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+modulate = Color( 0.203922, 0.2, 0.2, 1 )
+margin_left = 32.0
+margin_right = 640.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 608, 0 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.203922, 0.2, 0.2, 1 )
+text = "Includes screen shake"
+
+[node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 104.0
+margin_right = 640.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2"]
+margin_top = 20.0
+margin_right = 640.0
+margin_bottom = 80.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer"]
+margin_right = 28.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 28, 0 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.203922, 0.2, 0.2, 1 )
+text = ">"
+
+[node name="OptionName" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer"]
+margin_left = 32.0
+margin_right = 640.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 608, 0 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.203922, 0.2, 0.2, 1 )
+text = "Excludes screen shake"
+
+[node name="CenterContainer4" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 208.0
+margin_right = 640.0
+margin_bottom = 308.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer4"]
+margin_top = 20.0
+margin_right = 640.0
+margin_bottom = 80.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer4/HBoxContainer"]
+margin_right = 28.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 28, 0 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.203922, 0.2, 0.2, 1 )
+text = ">"
+
+[node name="OptionName" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer4/HBoxContainer"]
+margin_left = 32.0
+margin_right = 640.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 608, 0 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.203922, 0.2, 0.2, 1 )
+text = "Back"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2( -664.743, -845.862 )
